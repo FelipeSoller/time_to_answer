@@ -7,7 +7,8 @@ namespace :dev do
       show_spinner("Excluíndo Banco de Dados existente") { %x(rails db:drop) }
       show_spinner("Criando Banco de Dados") { %x(rails db:create) }
       show_spinner("Migrando tabelas do Banco de Dados") { %x(rails db:migrate) }
-      show_spinner("Criando administradores") { %x(rails dev:add_default_admin) }
+      show_spinner("Criando administrador padrão") { %x(rails dev:add_default_admin) }
+      show_spinner("Criando administradores aleatórios") { %x(rails dev:add_random_admins) }
       show_spinner("Criando usuários") { %x(rails dev:add_default_user) }
     else
       puts 'Você não está em ambiente de desenvolvimento'
@@ -21,6 +22,17 @@ namespace :dev do
       password: DEFAULT_PASSWORD,
       password_confirmation: DEFAULT_PASSWORD,
     )
+  end
+
+  desc "Adiciona administradores aleatórios"
+  task add_random_admins: :environment do
+    10.times do |i|
+      Admin.create!(
+        email: Faker::Internet.email,
+        password: DEFAULT_PASSWORD,
+        password_confirmation: DEFAULT_PASSWORD,
+      )
+    end
   end
 
   desc "Adiciona o usuário padrão"
