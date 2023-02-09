@@ -26,7 +26,7 @@ namespace :dev do
 
   desc "Adiciona administradores aleatórios"
   task add_random_admins: :environment do
-    10.times do
+    100.times do
       Admin.create!(
         email: Faker::Internet.email,
         password: DEFAULT_PASSWORD,
