@@ -1,4 +1,4 @@
-class AdminsBackoffice::SubjectsController < ApplicationController
+class AdminsBackoffice::SubjectsController < AdminsBackofficeController
   before_action :set_subject, only: %i[edit update destroy]
 
   def index
