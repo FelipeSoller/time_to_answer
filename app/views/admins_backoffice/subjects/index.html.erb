@@ -11,7 +11,7 @@
             <thead>
                 <tr>
                     <th>#</th>
-                    <th>Email</th>
+                    <th><%= translate_attribute(@subjects, :description)%></th>
                     <th style="text-align: center" >
                       <%= link_to new_admins_backoffice_subject_path, class:"btn btn-success btn-circle" do %>
                       <i class="fa fa-plus"></i>
