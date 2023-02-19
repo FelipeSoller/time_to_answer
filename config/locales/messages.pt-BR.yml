@@ -1,0 +1,5 @@
+'pt-BR':
+  view:
+    list: Lista de %{model}
+    edit: Edição de %{model}
+    new: Novo %{model}
