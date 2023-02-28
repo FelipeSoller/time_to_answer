@@ -5,7 +5,6 @@ class Question < ApplicationRecord
 
   paginates_per 10
 
-  def self.search(term, page)
-    Question.includes(:answers).where("lower(description) LIKE ?", "%#{term.downcase}%").page(page)
-  end
+  scope :_search, -> (term, page) { includes(:answers).where("lower(description) LIKE ?", "%#{term.downcase}%").page(page) }
+  scope :last_questions, -> (page) { Question.includes(:answers).order('created_at desc').page(page) }
 end
