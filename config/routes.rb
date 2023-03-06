@@ -17,7 +17,7 @@ Rails.application.routes.draw do
     resources :questions
   end
 
-  devise_for :admins
+  devise_for :admins, skip: [:registration]
   devise_for :users
 
   root 'site/welcome#index'
