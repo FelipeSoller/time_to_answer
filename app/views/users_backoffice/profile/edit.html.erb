@@ -85,11 +85,13 @@
             <% end %>
 
             <div class="form-group">
-              <%= profile_form.label :birth_date, class:'control-label col-md-3 col-sm-3 col-xs-12' %>
+              <%= profile_form.label :birth_date, class:"control-label col-md-3 col-sm-3 col-xs-12" %>
               <div class="col-md-6 col-sm-6 col-xs-12">
-                <%= profile_form.text_field :birth_date, class:'form-control col-md-7 col-xs-12' %>
+                <%= profile_form.text_field :birth_date,
+                    value: (l(@user.user_profile.birth_date) unless @user.user_profile.birth_date.blank?) ,
+                    class:"form-control col-md-7 col-xs-12 datepicker"%>
               </div>
-            </div>
+          </div>
           <% end %>
 
           <div class="form-group">
